@@ -51,13 +51,31 @@ public class Client {
     }
   }
 
+  public List<Client> getClients() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients where stylist_id = :id";
+      return con.createQuery(sql)
+                .addParameter("id", this.id)
+                .executeAndFetch(Client.class);
+    }
+  }
+
   public static Client find(int id) {
-    try(Connection con = DB>sql2o.open()) {
+    try(Connection con = DB.sql2o.open()) {
       String sql = "Select * FROM clients WHERE id = :id";
       Client client = con.createQuery(sql)
                          .addParameter("id", id)
                          .executeAndFetchFirst(Client.class);
       return client;
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM clients WHERE id = :id;";
+      con.createQuery(sql)
+         .addParameter("id", id)
+         .executeUpdate();
     }
   }
 

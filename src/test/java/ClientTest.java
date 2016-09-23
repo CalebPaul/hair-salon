@@ -14,14 +14,14 @@ public class ClientTest {
 
   @Before
   public void initialize() {
-    DB.sq2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", null, null);
+    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", null, null);
     firstClient = new Client("Bill", "Buzz", 1);
     secondClient = new Client("Jill", "Curls", 1);
   }
 
   @Test
   public void client_instantiatesCorrectly_true() {
-    assertTrue(true, firstClient instance of Client);
+    assertTrue(firstClient instanceof Client);
   }
 
   @Test public void getName_instantiatesCorrectlyWithName_String() {
@@ -29,7 +29,7 @@ public class ClientTest {
   }
 
   @Test public void getCut_instantiatesCorrectlyWithCut_String() {
-    assertEquals("buzz", firstClient.getCut());
+    assertEquals("Buzz", firstClient.getCut());
   }
 
   @Test public void getId_instantiatesCorrectlyWithId() {
@@ -37,7 +37,7 @@ public class ClientTest {
     assertTrue(firstClient.getId() > 0);
   }
 
-  @Test public void getId_instantiatesCorrectlyWithId() {
+  @Test public void getStylistId_returnsStylistId_true() {
     assertEquals(1, firstClient.getStylistId());
   }
 
@@ -54,7 +54,7 @@ public class ClientTest {
   public void save_saveStylistIdIntoDB() {
     Stylist newStylist = new Stylist("Lisa");
     newStylist.save();
-    Client newClient = new Client("Jana", "Short", 1);
+    Client newClient = new Client("Jana", "Short", newStylist.getId());
     newClient.save();
     Client savedClient = Client.find(newClient.getId());
     assertEquals(savedClient.getStylistId(), newStylist.getId());
@@ -73,6 +73,15 @@ public class ClientTest {
     firstClient.save();
     secondClient.save();
     assertEquals(Client.find(secondClient.getId()), secondClient);
+  }
+
+  @Test
+  public void delete_deletesTask_true() {
+    Client newClient = new Client("Jana", "Short", 1);
+    newClient.save();
+    int newClientId = newClient.getId();
+    newClient.delete();
+    assertEquals(null, Client.find(newClientId));
   }
 
   @Test

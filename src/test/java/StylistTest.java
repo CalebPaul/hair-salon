@@ -18,7 +18,7 @@ public class StylistTest {
     DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", null, null);
     firstStylist = new Stylist("Andre");
     secondStylist = new Stylist("Britt");
-    newClient = newClient("Allie", "Straight", 1);
+    newClient = new Client("Allie", "Straight", 1);
   }
 
   @Test
@@ -46,11 +46,11 @@ public class StylistTest {
   }
 
   @Test
-  public void getClients_retievesAllClientsFromDB_clientsList() {
+  public void getClients_retrievesAllClientsFromDB_clientsList() {
     firstStylist.save();
-    firstClient = new Client("Bill", "Buzz", 1);
+    Client firstClient = new Client("Bill", "Buzz", firstStylist.getId());
     firstClient.save();
-    secondClient = new Client("Jill", "Curls", 1);
+    Client secondClient = new Client("Jill", "Curls", firstStylist.getId());
     secondClient.save();
     Client[] clients = new Client[] { firstClient, secondClient };
     assertTrue(firstStylist.getClients().containsAll(Arrays.asList(clients)));
@@ -59,7 +59,7 @@ public class StylistTest {
   @Test
   public void find_returnsStylistWithSameId_secondStylist() {
     firstStylist.save();
-    secondStylist();
+    secondStylist.save();
     assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
   }
 
