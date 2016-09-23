@@ -21,6 +21,46 @@ public class StylistTest {
     newClient = newClient("Allie", "Straight", 1);
   }
 
-  
+  @Test
+  public void Stylist_instantiatesCorrectly_true() {
+    assertTrue(firstStylist instanceof Stylist);
+  }
+
+  @Test
+  public void getName_instantiatesCorrectlyWithName_String() {
+    assertEquals("Andre", firstStylist.getName());
+  }
+
+  @Test
+  public void getId_instantiatesCorrectlyWithId_int() {
+    firstStylist.save();
+    assertTrue(firstStylist.getId() > 0);
+  }
+
+  @Test
+  public void all_checksIfStylistContainsInstance_true() {
+    firstStylist.save();
+    secondStylist.save();
+    assertTrue(Stylist.all().get(0).equals(firstStylist));
+    assertTrue(Stylist.all().get(1).equals(secondStylist));
+  }
+
+  @Test
+  public void getClients_retievesAllClientsFromDB_clientsList() {
+    firstStylist.save();
+    firstClient = new Client("Bill", "Buzz", 1);
+    firstClient.save();
+    secondClient = new Client("Jill", "Curls", 1);
+    secondClient.save();
+    Client[] clients = new Client[] { firstClient, secondClient };
+    assertTrue(firstStylist.getClients().containsAll(Arrays.asList(clients)));
+  }
+
+  @Test
+  public void find_returnsStylistWithSameId_secondStylist() {
+    firstStylist.save();
+    secondStylist();
+    assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
+  }
 
 }

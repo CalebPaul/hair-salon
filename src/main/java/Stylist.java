@@ -12,4 +12,39 @@ public class Stylist {
     this.id = id;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public static List<Stylist> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT id, name FROM stylists";
+      return con.createQuery(sql)
+                .executeAndFetch(Stylist.class);
+    }
+  }
+
+  public List<Client> getClients() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients where stylist_id = :id";
+      return con.createQuery(sql)
+                .addParameter("id", this.id)
+                .executeAndFetch(Clients.class);
+    }
+  }
+
+  public static Stylist find (int id) {
+    try(Connection con = sql2o.open()) {
+      String sql = "SELECT * FROM stylists where id = :id";
+      Stylist stylist = con.createQuery(sql)
+                           .addParameter("id", id)
+                           .executeAndFetchFirst(Stylist.class);
+      return stylist;
+    }
+  }
+
 }

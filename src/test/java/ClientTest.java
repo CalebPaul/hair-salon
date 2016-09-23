@@ -50,7 +50,15 @@ public class ClientTest {
     assertEquals(newClient.getId(), savedClient.getId());
   }
 
-  //Add SAVE test for saving into DB
+  @Test
+  public void save_saveStylistIdIntoDB() {
+    Stylist newStylist = new Stylist("Lisa");
+    newStylist.save();
+    Client newClient = new Client("Jana", "Short", 1);
+    newClient.save();
+    Client savedClient = Client.find(newClient.getId());
+    assertEquals(savedClient.getStylistId(), newStylist.getId());
+  }
 
   @Test
   public void all_returnsAllInstancesOfClient_true() {
