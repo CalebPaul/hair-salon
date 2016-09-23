@@ -1,0 +1,10 @@
+<h3 class="page-header">All Stylists</h3>
+
+<ul>
+  #foreach($stylist in $stylists)
+    <li><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
+  #end
+</ul>
+
+<a href="/stylists/new">Add Stylist</a> |
+<a href="/">Main Page</a>

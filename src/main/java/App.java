@@ -10,55 +10,56 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
-    get("/", request, response -> {
+    get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
+      model.put("stylists", Stylist.all()); //not being used at the moment
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/", request, response -> {
+    get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       //add model.put() and logic here
       //add model.put() and logic here
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/", request, response -> {
+    get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       //add model.put() and logic here
       //add model.put() and logic here
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/", request, response -> {
+    get("/stylists/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<>();
+      model.put("stylists", Stylist.all());
+      model.put("template", "templates/stylists.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       //add model.put() and logic here
       //add model.put() and logic here
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/", request, response -> {
+    get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       //add model.put() and logic here
       //add model.put() and logic here
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/", request, response -> {
+    post("/", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       //add model.put() and logic here
       //add model.put() and logic here
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/", request, response -> {
-      Map<String, Object> model = new HashMap<>();
-      //add model.put() and logic here
-      //add model.put() and logic here
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    post("/", request, response -> {
+    post("/", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       //add model.put() and logic here
       //add model.put() and logic here
