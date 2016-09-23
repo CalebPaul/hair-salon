@@ -63,4 +63,23 @@ public class StylistTest {
     assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
   }
 
+  @Test
+  public void save_assignsIDToObject() {
+    firstStylist.save();
+    Stylist savedStylist = Stylist.all().get(0);
+    assertEquals(firstStylist.getId(), savedStylist.getId());
+  }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    firstStylist.save();
+    assertTrue(Stylist.all().get(0).equals(firstStylist));
+  }
+
+  @Test
+  public void equals_returnsTrueIfNamesAreTheSame_true() {
+    Stylist testStylist = new Stylist("Andre");
+    assertTrue(firstStylist.equals(testStylist));
+  }
+
 }
