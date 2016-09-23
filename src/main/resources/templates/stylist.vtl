@@ -1,0 +1,11 @@
+<h3 class="page-header">$stylist.getName()'s Clients</h3>
+
+#foreach($temp_variable in $array)
+<ul>
+  <li><a href="clients/$client.getId()"></a>$client.getName()</li>
+</ul>
+#end
+
+<a href="/stylists/$stylist.getId()/clients/new">Add new Client</a> |
+<a href="/stylists/new">All Stylists</a> |
+<a href="/">Main Page</a>

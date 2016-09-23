@@ -1,0 +1,14 @@
+<h3 class="page-header">Client List</h3>
+
+#if($clients)
+  <ul>
+    #foreach($client in $clients)
+      <li><strong>Client name:</strong> $client.getName() | <strong>Preferred style: </strong><em>$client.getCut()</em></li>
+    #end
+  </ul>
+#else
+  <h4>No Clients</h4>
+#end
+
+<a href="/">Main Page</a> |
+<a href="/stylists/new">All Stylists</a>
