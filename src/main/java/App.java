@@ -20,12 +20,12 @@ public class App {
     get("/stylists/:id/clients/new", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
-      model.put("Stylist", stylist);
+      model.put("stylist", stylist);
       model.put("template", "templates/stylist-client-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/stylists:id/venues", (request, response) -> {
+    get("/stylists/:id/clients", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
       model.put("stylist", stylist);
@@ -44,7 +44,7 @@ public class App {
     get("/stylists/new", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       model.put("stylists", Stylist.all());
-      model.put("template", "templates/stylists.vtl");
+      model.put("template", "templates/stylist-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -58,6 +58,7 @@ public class App {
     get("/stylists/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+      model.put("clients", Client.all());
       model.put("stylist", stylist);
       model.put("template", "templates/stylist.vtl");
       return new ModelAndView(model, layout);

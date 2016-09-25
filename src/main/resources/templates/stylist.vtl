@@ -1,9 +1,12 @@
 <h3 class="page-header">$stylist.getName()'s Clients</h3>
-
-#foreach($temp_variable in $array)
+#if($stylist)
 <ul>
+  #foreach($client in $stylist.getClients())
   <li><a href="clients/$client.getId()"></a>$client.getName()</li>
+  #end
 </ul>
+#else
+<p>No Clients</p>
 #end
 
 <a href="/stylists/$stylist.getId()/clients/new">Add new Client</a> |
