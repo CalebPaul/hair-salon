@@ -76,7 +76,7 @@ public class App {
 
     post("/clients", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
-      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams(":id")));
+      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams(":stylistId")));
       String name = request.queryParams("name");
       String cut = request.queryParams("cut");
       Client newClient = new Client(name, cut, stylist.getId());
