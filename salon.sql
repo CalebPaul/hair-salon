@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.1
--- Dumped by pg_dump version 9.5.1
+-- Dumped from database version 9.5.4
+-- Dumped by pg_dump version 9.5.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -34,7 +34,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: clients; Type: TABLE; Schema: public; Owner: Guest
+-- Name: clients; Type: TABLE; Schema: public; Owner: calebpaul
 --
 
 CREATE TABLE clients (
@@ -45,10 +45,10 @@ CREATE TABLE clients (
 );
 
 
-ALTER TABLE clients OWNER TO "Guest";
+ALTER TABLE clients OWNER TO calebpaul;
 
 --
--- Name: clients_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: clients_id_seq; Type: SEQUENCE; Schema: public; Owner: calebpaul
 --
 
 CREATE SEQUENCE clients_id_seq
@@ -59,17 +59,17 @@ CREATE SEQUENCE clients_id_seq
     CACHE 1;
 
 
-ALTER TABLE clients_id_seq OWNER TO "Guest";
+ALTER TABLE clients_id_seq OWNER TO calebpaul;
 
 --
--- Name: clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: calebpaul
 --
 
 ALTER SEQUENCE clients_id_seq OWNED BY clients.id;
 
 
 --
--- Name: stylists; Type: TABLE; Schema: public; Owner: Guest
+-- Name: stylists; Type: TABLE; Schema: public; Owner: calebpaul
 --
 
 CREATE TABLE stylists (
@@ -78,10 +78,10 @@ CREATE TABLE stylists (
 );
 
 
-ALTER TABLE stylists OWNER TO "Guest";
+ALTER TABLE stylists OWNER TO calebpaul;
 
 --
--- Name: stylists_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: stylists_id_seq; Type: SEQUENCE; Schema: public; Owner: calebpaul
 --
 
 CREATE SEQUENCE stylists_id_seq
@@ -92,65 +92,66 @@ CREATE SEQUENCE stylists_id_seq
     CACHE 1;
 
 
-ALTER TABLE stylists_id_seq OWNER TO "Guest";
+ALTER TABLE stylists_id_seq OWNER TO calebpaul;
 
 --
--- Name: stylists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: stylists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: calebpaul
 --
 
 ALTER SEQUENCE stylists_id_seq OWNED BY stylists.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
+-- Name: id; Type: DEFAULT; Schema: public; Owner: calebpaul
 --
 
 ALTER TABLE ONLY clients ALTER COLUMN id SET DEFAULT nextval('clients_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
+-- Name: id; Type: DEFAULT; Schema: public; Owner: calebpaul
 --
 
 ALTER TABLE ONLY stylists ALTER COLUMN id SET DEFAULT nextval('stylists_id_seq'::regclass);
 
 
 --
--- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: Guest
+-- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: calebpaul
 --
 
 COPY clients (id, name, cut, stylist_id) FROM stdin;
-1	Paul	fade	1
+9	Joanne	Short Curls	10
+10	Kate	Side Pony	11
 \.
 
 
 --
--- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: calebpaul
 --
 
-SELECT pg_catalog.setval('clients_id_seq', 1, true);
+SELECT pg_catalog.setval('clients_id_seq', 10, true);
 
 
 --
--- Data for Name: stylists; Type: TABLE DATA; Schema: public; Owner: Guest
+-- Data for Name: stylists; Type: TABLE DATA; Schema: public; Owner: calebpaul
 --
 
 COPY stylists (id, name) FROM stdin;
-1	Andre
-2	Olivia
-3	Caleb
+10	Philipe
+11	Sara
+12	Sean
 \.
 
 
 --
--- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: calebpaul
 --
 
-SELECT pg_catalog.setval('stylists_id_seq', 3, true);
+SELECT pg_catalog.setval('stylists_id_seq', 12, true);
 
 
 --
--- Name: clients_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest
+-- Name: clients_pkey; Type: CONSTRAINT; Schema: public; Owner: calebpaul
 --
 
 ALTER TABLE ONLY clients
@@ -158,7 +159,7 @@ ALTER TABLE ONLY clients
 
 
 --
--- Name: stylists_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest
+-- Name: stylists_pkey; Type: CONSTRAINT; Schema: public; Owner: calebpaul
 --
 
 ALTER TABLE ONLY stylists
@@ -166,12 +167,12 @@ ALTER TABLE ONLY stylists
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: epicodus
+-- Name: public; Type: ACL; Schema: -; Owner: calebpaul
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM epicodus;
-GRANT ALL ON SCHEMA public TO epicodus;
+REVOKE ALL ON SCHEMA public FROM calebpaul;
+GRANT ALL ON SCHEMA public TO calebpaul;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
