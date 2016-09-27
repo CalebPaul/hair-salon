@@ -25,20 +25,24 @@ public class ClientTest {
     assertTrue(firstClient instanceof Client);
   }
 
-  @Test public void getName_instantiatesCorrectlyWithName_String() {
+  @Test 
+  public void getName_instantiatesCorrectlyWithName_String() {
     assertEquals("Bill", firstClient.getName());
   }
 
-  @Test public void getCut_instantiatesCorrectlyWithCut_String() {
+  @Test 
+  public void getCut_instantiatesCorrectlyWithCut_String() {
     assertEquals("Buzz", firstClient.getCut());
   }
 
-  @Test public void getId_instantiatesCorrectlyWithId() {
+  @Test 
+  public void getId_instantiatesCorrectlyWithId() {
     firstClient.save();
     assertTrue(firstClient.getId() > 0);
   }
 
-  @Test public void getStylistId_returnsStylistId_true() {
+  @Test 
+  public void getStylistId_returnsStylistId_true() {
     assertEquals(1, firstClient.getStylistId());
   }
 
