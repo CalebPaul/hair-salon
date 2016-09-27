@@ -40,13 +40,16 @@ _User can add, delete, and update info for Clients and Stylists, and assign clie
 * Open new terminal window & Type in PSQL:
 	  `CREATE DATABASE hair_salon;`
 
-* type in terminal:
+* Type in terminal:
 	  `psql media < salon.sql`
+
+* Type in terminal:
+	`\c hair_salon`
 
 * Type in terminal:
 	  `gradle run`
 
-* use web browser to navigate to:
+* Use web browser to navigate to:
 	`localhost:4567`
 
 
