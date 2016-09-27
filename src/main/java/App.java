@@ -58,8 +58,6 @@ public class App {
       String cut = request.queryParams("cut");
       Stylist stylist = Stylist.find(client.getStylistId());
       client.update(cut);
-      // String url = String.format("/stylists/%d/clients/%d", stylist.getId(), client.getId());
-      // response.redirect(url);
       model.put("stylist", stylist);
       model.put("clients", Client.all());
       model.put("template", "templates/clients.vtl");
