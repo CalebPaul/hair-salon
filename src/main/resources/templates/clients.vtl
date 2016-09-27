@@ -3,7 +3,7 @@
 #if($clients)
   <ul>
     #foreach($client in $clients)
-      <li><strong>Client name:</strong> $client.getName() | <strong>Preferred style: </strong><em>$client.getCut()</em> | <strong>Preferred stylist: </strong><em>$stylist.getName()</em></li>
+      <li><strong>name: </strong><a href="/clients/$client.getId()">$client.getName()</a> | <strong>usual style: </strong><em>$client.getCut()</em>
     #end
   </ul>
 #else

@@ -70,6 +70,16 @@ public class Client {
     }
   }
 
+  public void update(String cut) {
+    try(Connection con = DB.sql2o.open()) {
+    String sql = "UPDATE clients SET cut = :cut WHERE id = :id";
+    con.createQuery(sql)
+      .addParameter("cut", cut)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM clients WHERE id = :id;";

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
+import java.time.LocalDateTime;
 
 public class StylistTest {
   private Stylist firstStylist;
@@ -61,6 +62,23 @@ public class StylistTest {
     firstStylist.save();
     secondStylist.save();
     assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
+  }
+
+  @Test
+  public void update_updatesStylistName_true() {
+    Stylist testStylist = new Stylist("Andre");
+    testStylist.save();
+    testStylist.update("Andrew");
+    assertEquals("Andrew", Stylist.find(testStylist.getId()).getName());
+  }
+
+  @Test
+  public void delete_deletesStylist_true() {
+    Stylist testStylist = new Stylist("Andre");
+    testStylist.save();
+    int newStylistId = testStylist.getId();
+    testStylist.delete();
+    assertEquals(null, Stylist.find(newStylistId));
   }
 
   @Test

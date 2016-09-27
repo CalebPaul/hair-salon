@@ -9,6 +9,18 @@
 <p>No Clients</p>
 #end
 
+<h4>Change Stylist Nickname:</h4>
+<form action="/stylists/$stylist.getId()/update" method="post">
+  <label for="name">New Nickname</label>
+  <input id="name" name="name" type="text">
+  <button type="submit" class="btn btn-info">Update</button>
+</form>
+
+<h4>Remove Stylist: </h4>
+<form action="/stylists/$stylist.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete-stylist">Delete $stylist.getName()</button>
+</form>
+
 <a href="/stylists/$stylist.getId()/clients/new">Add new Client</a> |
-<a href="/stylists/new">All Stylists</a> |
+<a href="/stylists">All Stylists</a> |
 <a href="/">Main Page</a>

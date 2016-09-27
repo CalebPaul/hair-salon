@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
+import java.time.LocalDateTime;
 
 public class ClientTest {
   private Client firstClient;
@@ -76,7 +77,15 @@ public class ClientTest {
   }
 
   @Test
-  public void delete_deletesTask_true() {
+  public void update_updatesClientDescription_true() {
+    Client newClient = new Client("Jana", "Short", 1);
+    newClient.save();
+    newClient.update("Mullet");
+    assertEquals("Mullet", Client.find(newClient.getId()).getCut());
+  }
+
+  @Test
+  public void delete_deletesClient_true() {
     Client newClient = new Client("Jana", "Short", 1);
     newClient.save();
     int newClientId = newClient.getId();
